@@ -1,1 +1,1 @@
-web: bin/go run main.go
+web: /usr/local/bin/go run main.go
