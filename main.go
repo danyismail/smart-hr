@@ -53,5 +53,6 @@ func main(){
 	r.GET("/companies", CompanyController.GetAll)
 	
 	godotenv.Load()
+	//command
 	r.Run("localhost" + ":" + os.Getenv("PORT"))
 }
