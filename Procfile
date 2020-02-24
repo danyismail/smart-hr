@@ -1,1 +1,1 @@
-web: /bin/smart-hr
+web: api-smart-hr
