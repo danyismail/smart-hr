@@ -1,7 +1,7 @@
 package main
 
 import(
-	// "os"
+	"os"
 	// "fmt"
 	"github.com/gin-gonic/gin"
 	"smart-hr/modules/users/api"
@@ -10,12 +10,14 @@ import(
 	Company "smart-hr/modules/companies/api"
 	Component "smart-hr/modules/components/api"
 	"github.com/gin-contrib/cors"
-	// "github.com/joho/godotenv"
+	"github.com/joho/godotenv"
 )
 
 func main(){
 	// config.Init()
 	r := gin.Default()
+
+	
 	
 	UserController := api.UserController{}
 	ReportController := Reports.ReportsController{}
@@ -53,9 +55,9 @@ func main(){
 	r.POST("/companies/add", CompanyController.Add)
 	r.GET("/companies", CompanyController.GetAll)
 	
-	// godotenv.Load()
-	// fmt.Println(os.Getenv("PORT"))
+	godotenv.Load()
+	port := os.Getenv("PORT")
 	
 	//command
-	r.Run("localhost" + ":" + $PORT)
+	r.Run("localhost" + ":" + port)
 }
