@@ -2,6 +2,7 @@ package main
 
 import(
 	"os"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"smart-hr/modules/users/api"
 	Reports "smart-hr/modules/reports/api"
@@ -52,7 +53,9 @@ func main(){
 	r.POST("/companies/add", CompanyController.Add)
 	r.GET("/companies", CompanyController.GetAll)
 	
-	godotenv.Load()
+	// godotenv.Load()
+	// fmt.Println(os.Getenv("PORT"))
+	
 	//command
-	r.Run("localhost" + ":" + os.Getenv("PORT"))
+	r.Run("localhost" + ":" + "8000")
 }
