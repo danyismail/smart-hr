@@ -59,5 +59,5 @@ func main(){
 	port := os.Getenv("PORT")
 	
 	//command
-	r.Run("localhost" + ":" + port)
+	r.Run(":" + port)
 }
