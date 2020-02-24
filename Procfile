@@ -1,1 +1,1 @@
-web: api-smart-hr
+web: go run main.go
