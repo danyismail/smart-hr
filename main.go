@@ -57,5 +57,5 @@ func main(){
 	// fmt.Println(os.Getenv("PORT"))
 	
 	//command
-	r.Run("localhost" + ":" + "8080")
+	r.Run("localhost" + ":" + $PORT)
 }
