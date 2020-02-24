@@ -10,7 +10,7 @@ import(
 	Company "smart-hr/modules/companies/api"
 	Component "smart-hr/modules/components/api"
 	"github.com/gin-contrib/cors"
-	"github.com/joho/godotenv"
+	// "github.com/joho/godotenv"
 )
 
 func main(){
