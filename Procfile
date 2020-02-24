@@ -1,1 +1,1 @@
-web: /usr/local/bin/go run main.go
+web: go-getting-started
