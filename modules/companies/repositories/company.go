@@ -26,11 +26,11 @@ func (cr *CompanyRepositories) AddCompany(company models.Company) (result string
 }
 
 func (cr *CompanyRepositories) GetAll() (company []models.Company, err error) {
-	query := "select * from companies"
+	query := "select id, name, address, email, username, password, phone, role_id from companies"
 	rows, errQuery := database.DB.Query(query)
 	if errQuery != nil {
 		logger.Log.Println(errQuery)
-		return company, err
+		return company, errQuery
 	}
 	var result models.Company
 	var arrResult []models.Company
@@ -48,7 +48,7 @@ func (cr *CompanyRepositories) GetAll() (company []models.Company, err error) {
 
 		if errScan != nil {
 			logger.Log.Println(errScan)
-			return company, err
+			return company, errScan
 		}
 
 		arrResult = append(arrResult, result)
