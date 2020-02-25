@@ -42,7 +42,7 @@ func(u *EmployeeController) Add(ctx *gin.Context){
 	result, err := repo.Add(form)
 	if err != nil {
 		ctx.JSON(400,gin.H{
-			"status" : "failed",
+			"status" : result,
 			"messages" : err.Error(),
 		})
 		return

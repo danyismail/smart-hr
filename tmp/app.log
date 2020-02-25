@@ -1,4 +1,7 @@
-2020/02/25 22:48:22 connection.go:20: Connection to db successfully
-2020/02/25 22:48:25 employee.go:16: pq: SSL is not enabled on the server
-2020/02/25 22:48:35 user.go:26: pq: SSL is not enabled on the server
-2020/02/25 22:48:50 user.go:26: pq: SSL is not enabled on the server
+2020/02/26 00:31:19 connection.go:22: Connection to db successfully
+2020/02/26 00:33:17 employee.go:57: pq: duplicate key value violates unique constraint "employees_employee_id_key"
+2020/02/26 00:33:56 employee.go:57: pq: duplicate key value violates unique constraint "employees_employee_id_key"
+2020/02/26 00:34:08 employee.go:57: pq: duplicate key value violates unique constraint "employees_employee_id_key"
+2020/02/26 00:50:42 employee.go:57: write tcp 192.168.43.181:52339->3.91.112.166:5432: write: broken pipe
+2020/02/26 00:50:55 employee.go:57: pq: duplicate key value violates unique constraint "employees_employee_id_key"
+2020/02/26 00:51:37 employee.go:57: pq: duplicate key value violates unique constraint "employees_employee_id_key"

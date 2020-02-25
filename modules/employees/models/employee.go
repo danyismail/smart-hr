@@ -8,15 +8,15 @@ type Employee struct {
 	NIK				string			`json:"nik"`
 	BpjsID			string			`json:"bpjs_id"`
 	JoinDate 		string 			`json:"join_date"`
-	FirstName 		string 			`json:"firstname"`
-	LastName 		string 			`json:"lastname"`
+	FirstName 		string 			`json:"fname"`
+	LastName 		string 			`json:"lname"`
 	PlaceOfBirth 	string 			`json:"place_of_birth"`
 	Birthday 		string 			`json:"birthday"`
 	Address 		string 			`json:"address"`
 	Age  			int 			`json:"age"`
 	Sallary 		int				`json:"sallary"`
-	DepartmentID    int     
-	LevelID    		int     
-	CompanyID    	int  
+	DepartmentID    int     		`json:"department_id"`
+	LevelID    		int     		`json:"level_id"`
+	CompanyID    	int  			`json:"company_id"`
 	Component		[]ComponentModel.Component  `json:"component"`
 }

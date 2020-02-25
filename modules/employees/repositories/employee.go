@@ -47,9 +47,10 @@ func (r *EmployeeRepositories) GetAll() (result []models.Employee, err error) {
 }
 
 func (r *EmployeeRepositories) Add(form models.Employee) (result string, err error) {
+	fmt.Println(form)
 	query := fmt.Sprintf("insert into employees (employee_id, first_name, last_name, join_date, place_of_birth, birthday,")
 	query = fmt.Sprintf(" %s address, age, sallary, department_id, level_id, company_id, bpjs_id, nik) ", query)
-	query = fmt.Sprintf(" %s values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $2, $13, $14)", query)
+	query = fmt.Sprintf(" %s values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)", query)
 	fmt.Println(form.NIK)
 	_, errExec := database.DB.Exec(query, form.EmployeeID, form.FirstName, form.LastName, form.JoinDate, form.PlaceOfBirth, form.Birthday, form.Address, form.Age, form.Sallary, form.DepartmentID, form.LevelID, form.CompanyID, form.BpjsID, form.NIK)
 	if errExec != nil {
