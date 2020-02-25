@@ -1,1 +1,4 @@
-2020/02/25 22:36:59 connection.go:20: Connection to db successfully
+2020/02/25 22:48:22 connection.go:20: Connection to db successfully
+2020/02/25 22:48:25 employee.go:16: pq: SSL is not enabled on the server
+2020/02/25 22:48:35 user.go:26: pq: SSL is not enabled on the server
+2020/02/25 22:48:50 user.go:26: pq: SSL is not enabled on the server

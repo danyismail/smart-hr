@@ -10,7 +10,7 @@ import (
 type EmployeeRepositories struct{}
 
 func (r *EmployeeRepositories) GetAll() (result []models.Employee, err error) {
-	query := "select id, employee_id, nik, bpjs_id, join_date, first_name, last_name, place_of_birth, birthday, address, age, sallary from employees"
+	query := "select id, employee_id, nik, bpjs_id, join_date, first_name, last_name, place_of_birth, birthday, address, age, from employees"
 	rows, err := database.DB.Query(query)
 	if err != nil {
 		logger.Log.Println(err)
@@ -37,7 +37,7 @@ func (r *EmployeeRepositories) GetAll() (result []models.Employee, err error) {
 		)
 		if errScan != nil {
 			fmt.Println("Failed while scanning users", errScan)
-			return result, err
+			return result, errScan
 		}
 
 		employees = append(employees, employee)
