@@ -40,6 +40,7 @@ func main(){
 	r.GET("/users", UserController.GetAll)
 	
 	r.GET("/employees", EmployeeController.GetAll)
+	r.GET("/employees/company/:id", EmployeeController.GetEmployeesByCompanyID)
 	r.POST("/employees/add", EmployeeController.Add)
 	
 	r.GET("/reports/bpjs", ReportController.ShowBPJSReport)

@@ -26,3 +26,9 @@ type Ammount struct {
 	ValID int `json:"val_id"`
 	Ammount float64 `json:"ammount"`
 }
+
+type SallaryParam struct {
+	CompanyID int `json:"company_id"`
+	Year int `json:"year"`
+	Month int `json:"month"`
+}

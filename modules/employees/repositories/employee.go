@@ -60,3 +60,39 @@ func (r *EmployeeRepositories) Add(form models.Employee) (result string, err err
 
 	return "New Employee has been added", nil
 }
+
+func (r *EmployeeRepositories) GetEmployeesByCompanyID(id int) (employees []models.Employee, err error) {
+	query := "select id, employee_id, nik, bpjs_id, join_date, first_name, last_name, place_of_birth, birthday, address, age, sallary from employees where company_id = $1" 
+	rows, errQ := database.DB.Query(query, id)
+
+	results := []models.Employee{}
+	result := models.Employee{}
+	if errQ != nil {
+		logger.Log.Println(errQ)
+		return employees, errQ
+	}
+	
+	for rows.Next() {
+		errS := rows.Scan(
+			&result.ID,
+			&result.EmployeeID,
+			&result.NIK,
+			&result.BpjsID,
+			&result.JoinDate,
+			&result.FirstName,
+			&result.LastName,
+			&result.PlaceOfBirth,
+			&result.Birthday,
+			&result.Address,
+			&result.Age,
+			&result.Sallary,
+		)
+		if errS != nil {
+			return employees, errS
+		}
+
+		results = append(results, result)
+	}
+	
+	return results, nil
+}
