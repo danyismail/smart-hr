@@ -51,7 +51,7 @@ func (u *UserController) Login(ctx *gin.Context) {
 	}
 	result, err := repo.Login(form)
 	if err != nil {
-		ctx.JSON(400, gin.H{
+		ctx.JSON(401, gin.H{
 			"status": "failed",
 			"data":   err.Error(),
 		})
