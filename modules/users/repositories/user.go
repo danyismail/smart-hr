@@ -15,6 +15,7 @@ type UserRepositories struct{}
 type loginData struct{
 	ID 			int		`json:"id"`
 	Username 	string  `json:"username"`
+	Name 		string  `json:"name"`
 	Email 		string  `json:"email"`
 	RoleID 		int     `json:"roleID"`
 	IsLogin     bool    `json:"is_login"`
@@ -51,11 +52,11 @@ func(r *UserRepositories) GetAll()(result []UserModel.User, err error){
 }
 
 func(r *UserRepositories) Login(form UserModel.LoginForm)(user loginData , err error){
-	query := "select id, username, email, role_id ,password from companies where username = $1"
+	query := "select id, username, name, email, role_id ,password from companies where username = $1"
 	var hPassword string
 	userData := loginData{}
 	row := database.DB.QueryRow(query, form.Username)
-	err = row.Scan(&userData.ID, &userData.Username, &userData.Email, &userData.RoleID, &hPassword)
+	err = row.Scan(&userData.ID, &userData.Username, &userData.Name, &userData.Email, &userData.RoleID, &hPassword)
 	fmt.Println(hPassword)
 	if err != nil {
 		logger.Log.Println(err)

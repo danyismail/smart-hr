@@ -1,3 +1,1 @@
-2020/03/01 14:12:27 connection.go:22: Connection to db successfully
-2020/03/01 14:16:06 jwt.go:26: crypto/bcrypt: hashedPassword is not the hash of the given password
-2020/03/01 14:16:06 user.go:69: [Wrong Password Bcrypt doesnt match] crypto/bcrypt: hashedPassword is not the hash of the given password
+2020/03/01 14:33:39 connection.go:22: Connection to db successfully
