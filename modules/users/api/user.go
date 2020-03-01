@@ -53,7 +53,7 @@ func (u *UserController) Login(ctx *gin.Context) {
 	if err != nil {
 		ctx.JSON(401, gin.H{
 			"status": "failed",
-			"data":   err.Error(),
+			"error":   err.Error(),
 		})
 		return
 	} else {
