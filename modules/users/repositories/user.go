@@ -2,11 +2,12 @@ package repositories
 
 import(
 	"smart-hr/database"
-	"smart-hr/library/jwt"
 	// CompanyModel "hr/modules/companies/models"
-	"smart-hr/modules/users/models"
+	"smart-hr/modules/companies/models"
+	UserModel "smart-hr/modules/users/models"
 	"fmt"
 	"smart-hr/library/logger"
+	"smart-hr/library/jwt"
 )
 
 type UserRepositories struct{}
@@ -19,7 +20,7 @@ type loginData struct{
 	IsLogin     bool    `json:"is_login"`
 }
 
-func(r *UserRepositories) GetAll()(result []models.User, err error){
+func(r *UserRepositories) GetAll()(result []UserModel.User, err error){
 	query := "select username, u.email, r.name, c.office_name from users u join role r on u.role_id = r.id join company c on c.id = u.company_id  "
 	rows, err := database.DB.Query(query)
 	if err != nil {
@@ -27,8 +28,8 @@ func(r *UserRepositories) GetAll()(result []models.User, err error){
 		return result, err
 	}
 
-	users := []models.User{}
-	user := models.User{}
+	users := []UserModel.User{}
+	user := UserModel.User{}
 
 
 	for rows.Next(){
@@ -49,7 +50,7 @@ func(r *UserRepositories) GetAll()(result []models.User, err error){
 	return users, nil
 }
 
-func(r *UserRepositories) Login(form models.LoginForm)(user loginData , err error){
+func(r *UserRepositories) Login(form UserModel.LoginForm)(user loginData , err error){
 	query := "select id, username, email, role_id ,password from companies where username = $1"
 	var hPassword string
 	userData := loginData{}
@@ -93,10 +94,12 @@ func (r *UserRepositories) Logout(userID int) (result string, err error) {
 	return "Logout successfully", nil
 }
 
-func(r *UserRepositories) Add(form models.User)(result string, err error){
+func(r *UserRepositories) Add(form models.Company)(result string, err error){
+	bC := jwt.JWT{}
+	hashPwd, err := bC.HashPassword(form.Password)
 
-	query := fmt.Sprintf("insert into users (username, email, password, role_id, company_id) values ($1 ,$2, $3, $4, $5);")
-	_, err = database.DB.Exec(query, form.Username, form.Email, form.Password, form.RoleID, form.CompanyID)
+	query := fmt.Sprintf("insert into companies (name, address, email, username, password, phone, role_id) values ($1 ,$2, $3, $4, $5, $6, $7);")
+	_, err = database.DB.Exec(query, form.Name, form.Address, form.Email, form.Username, hashPwd, form.Phone, form.RoleID)
 
 	if err != nil {
 		logger.Log.Println(err)
@@ -106,4 +109,6 @@ func(r *UserRepositories) Add(form models.User)(result string, err error){
 	return "New client has been created", nil
 
 }
+
+
 

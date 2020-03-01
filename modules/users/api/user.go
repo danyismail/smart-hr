@@ -3,9 +3,12 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	UserModel "smart-hr/modules/users/models"
+	CompanyModel "smart-hr/modules/companies/models"
 	"smart-hr/modules/users/repositories"
 	"strconv"
 )
+
+
 
 type UserController struct{}
 
@@ -91,7 +94,7 @@ func (u *UserController) Logout(ctx *gin.Context) {
 
 func (u *UserController) Add(ctx *gin.Context) {
 	repo := repositories.UserRepositories{}
-	form := UserModel.User{}
+	form := CompanyModel.Company{}
 
 	err := ctx.ShouldBindJSON(&form)
 	if err != nil {
